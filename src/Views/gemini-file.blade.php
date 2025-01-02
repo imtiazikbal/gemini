@@ -108,118 +108,32 @@
 </head>
 
 <body class="container">
-    <form action="{{ route('singleDocument') }}" method="POST" enctype="multipart/form-data">
-        <h1>Single File with Prompt and Trained Model</h1>
+
+
+    <form action="{{ route('documents') }}" method="POST" enctype="multipart/form-data">
         @csrf <!-- Laravel's CSRF protection token -->
-
-        <!-- File Input -->
-        <div>
-            <label for="files">Upload Files (Allowed: PDF, TXT, HTML, CSS, CSV, XML, RTF | Max: 10MB)</label>
-            <input type="file" name="file" id="files" required accept=".pdf,.txt,.html,.css,.csv,.xml,.rtf">
-        </div>
-
-        <div>
-            <label for="files">Specify Gemini Trained Models</label>
-            <a href="https://ai.google.dev/gemini-api/docs/models/gemini-models">Gemini Models</a>
-            <br>
-            <select name="model" id="models" class="form-control">
-                <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
-                <option value="gemini-2.0-flash-exp">Gemini 2.0 Flash</option>
-                <option value="gemini-exp-1206">Gemini gemini-exp-1206</option>
-                <option value="learnlm-1.5-pro-experimental">LearnLM 1.5 Pro Experimental</option>
-                <option value="gemini-exp-1121">Gemini gemini-exp-1121</option>
-                <option value="gemini-exp-1121">Gemini gemini-exp-1121</option>
-                <option value="gemini-1.5-pro-exp-0827">Gemini 1.5 Pro gemini-1.5-pro-exp-0827</option>
-                <option value="gemini-1.5-pro-exp-0801">Gemini 1.5 Pro</option>
-                <option value="gemini-1.5-flash-8b-exp-0924">Gemini 1.5 Flash-8B</option>
-                <option value="gemini-1.5-flash-8b-exp-0827">Gemini 1.5 Flash-8B</option>
-            </select>
-        </div>
-
-
-        <!-- Prompt Input -->
-        <div>
-            <label for="prompt">Prompt</label>
-
-            <textarea name="prompt" id="prompt" required placeholder="Enter your prompt here"></textarea>
-        </div>
-
-        <!-- Submit Button -->
-        <div>
-            <button type="submit">Submit</button>
-        </div>
-    </form>
-
-    <form action="{{ route('multiplePdfDocument') }}" method="POST" enctype="multipart/form-data">
-       @csrf <!-- Laravel's CSRF protection token -->
-        <h1>Multiple PDF with Prompt and Trained Model</h1>
-
-
-        <!-- File Input -->
-        <div>
-            <label for="files">Upload PDF (Allowed: Only PDF | Max: 20MB )</label>
-            <input type="file" name="pdf[]" id="files" required accept=".pdf" multiple>
-        </div>
-        
-
-        <div>
-
-            <label for="files">Specify Gemini Trained Models</label>
-            <a href="https://ai.google.dev/gemini-api/docs/models/gemini-models">Gemini Models</a>
-            <br>
-            <select name="model" id="models" class="form-control">
-                <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
-                <option value="gemini-2.0-flash-exp">Gemini 2.0 Flash</option>
-                <option value="gemini-exp-1206">Gemini gemini-exp-1206</option>
-                <option value="learnlm-1.5-pro-experimental">LearnLM 1.5 Pro Experimental</option>
-                <option value="gemini-exp-1121">Gemini gemini-exp-1121</option>
-                <option value="gemini-exp-1121">Gemini gemini-exp-1121</option>
-                <option value="gemini-1.5-pro-exp-0827">Gemini 1.5 Pro gemini-1.5-pro-exp-0827</option>
-                <option value="gemini-1.5-pro-exp-0801">Gemini 1.5 Pro</option>
-                <option value="gemini-1.5-flash-8b-exp-0924">Gemini 1.5 Flash-8B</option>
-                <option value="gemini-1.5-flash-8b-exp-0827">Gemini 1.5 Flash-8B</option>
-            </select>
-        </div>
-
-
-        <!-- Prompt Input -->
-        <div>
-            <label for="prompt">Prompt</label>
-
-            <textarea name="prompt" id="prompt" required placeholder="Enter your prompt here"></textarea>
-        </div>
-
-        <!-- Submit Button -->
-        <div>
-            <button type="submit">Submit</button>
-        </div>
-    </form>
-
-
-
-    <form action="{{ route('uploadMultipleImages') }}" method="POST" enctype="multipart/form-data">
-        @csrf <!-- Laravel's CSRF protection token -->
-         <h1>Multiple Images with Prompt and Trained Model</h1>
+         <h1>Multiple PDF with Prompt and Trained Model</h1>
  
  
          <!-- File Input -->
          <div>
-             <label for="files">Upload Files (Allowed: JPEG, PNG, JPG, WebP, HEIC, HEIF | Max: 20MB )</label>
-             <input type="file" name="images[]" id="files"  required accept=".jpeg,.jpg,.png,.webp,.heic,.heif" multiple>
+            <label for="files">Upload a file (Allowed: pdf, txt, text/plain, html, css, csv, xml, rtf, jpeg, png, jpg, webp, heic, heif - Max size: 10MB)</label>
+            <input type="file" name="files[]" id="files"  multiple>
          </div>
          
  
          <div>
+ 
              <label for="files">Specify Gemini Trained Models</label>
              <a href="https://ai.google.dev/gemini-api/docs/models/gemini-models">Gemini Models</a>
              <br>
              <select name="model" id="models" class="form-control">
                  <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
                  <option value="gemini-2.0-flash-exp">Gemini 2.0 Flash</option>
-                 <option value="gemini-exp-1206">Gemini</option>
+                 <option value="gemini-exp-1206">Gemini gemini-exp-1206</option>
                  <option value="learnlm-1.5-pro-experimental">LearnLM 1.5 Pro Experimental</option>
-                 <option value="gemini-exp-1121">Gemini</option>
-                 <option value="gemini-exp-1114">Gemini</option>
+                 <option value="gemini-exp-1121">Gemini gemini-exp-1121</option>
+                 <option value="gemini-exp-1121">Gemini gemini-exp-1121</option>
                  <option value="gemini-1.5-pro-exp-0827">Gemini 1.5 Pro gemini-1.5-pro-exp-0827</option>
                  <option value="gemini-1.5-pro-exp-0801">Gemini 1.5 Pro</option>
                  <option value="gemini-1.5-flash-8b-exp-0924">Gemini 1.5 Flash-8B</option>
@@ -241,5 +155,4 @@
          </div>
      </form>
 </body>
-
 </html>

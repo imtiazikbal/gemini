@@ -269,8 +269,6 @@ use Illuminate\Support\Facades\Log;
 use Imtiaz\LaravelGemini\Gemini\GeminiApi;
 use Imtiaz\LaravelGemini\Gemini\MultiPdfUpload;
 use Imtiaz\LaravelGemini\Gemini\MultipleImage;
-
-
 use App\Models\Chat;
 use Illuminate\Support\Facades\Storage;
 
@@ -285,7 +283,7 @@ class GeminiController extends Controller
         // Validate the input
         $validator = Validator::make($request->all(), [
             'files' => 'required|array', // Expect an array of files
-            'files.*' => 'required|mimes:pdf,txt,text/plain,html,css,csv,xml,rtf,jpeg,png,jpg,webp,heic,heif|max:10240', // File validation rules
+            'files.*' => 'required|mimes:pdf,txt,text/plain,html,css,csv,xml,rtf,jpeg,png,jpg,webp,heic,heif|mimetypes:text/rtf,application/rtf|max:10240', 
             'prompt' => 'required|string',
             'model' => 'required|string'
         ]);
@@ -322,7 +320,7 @@ class GeminiController extends Controller
     
         // Define the allowed MIME types for documents
         $allowedMimeTypes = [
-            'application/pdf', 'text/plain', 'text/html', 'text/css', 'text/csv', 'application/xml', 'application/rtf'
+            'application/pdf', 'text/plain', 'text/html', 'text/css', 'text/csv', 'application/xml', 'application/rtf','text/rtf','application/rtf'
         ];
     
         // Define the allowed MIME types for images
@@ -437,6 +435,7 @@ class GeminiController extends Controller
 
     }
 }
+
 
 
 
